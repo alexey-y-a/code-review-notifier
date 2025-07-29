@@ -3,7 +3,7 @@ package service
 import (
 	"fmt"
 
-	"github.com/alexey-y-a/code-review-notifier/internal/adapters"
+	"github.com/alexey-y-a/code-review-notifier/internal/adapters/telegram"
 	"github.com/alexey-y-a/code-review-notifier/internal/model"
 	"github.com/alexey-y-a/code-review-notifier/internal/repository"
 	"go.uber.org/zap"
@@ -16,10 +16,10 @@ type Service interface {
 
 type BotService struct {
 	repo     repository.UserRepository
-	telegram adapters.TelegramClient
+	telegram telegram.TelegramClient
 }
 
-func NewBotService(repo repository.UserRepository, telegram adapters.TelegramClient) *BotService {
+func NewBotService(repo repository.UserRepository, telegram telegram.TelegramClient) *BotService {
 	return &BotService{repo: repo, telegram: telegram}
 }
 
